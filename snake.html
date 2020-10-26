@@ -1,0 +1,112 @@
+<!--
+ * @Author: CSU_XZY
+ * @Date: 2020-10-17 12:38:20
+ * @LastEditors: CSU_XZY
+ * @LastEditTime: 2020-10-26 15:37:56
+ * @FilePath: \第二天\snake\snake.html
+ * @Description: just to play
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: #444;
+    }
+    table{
+        margin: 10px auto;
+        overflow: hidden;
+        border-collapse: collapse;
+        border: solid 1px #ddd;
+    }
+    td{
+        border: solid 1px #eeeeee;
+        display: table-cell;
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+    }
+    p{
+        color: #fff;
+        margin: 50px auto;
+        width: 450px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .snake_head{
+        /* background: url("head.png"); */
+        background-color:#dd4444
+    }
+    .snake_tail{
+        /* background: url("tail.png"); */
+        /* border: 1px solid #ededed; */
+        /* width: 20px;
+        height: 20px;
+        color: #fff;
+        border: none;
+        box-shadow: 0 0 0 1px #ededed;
+        border-radius: 50%; */
+        background-color: coral;
+    }
+    .notSnake{
+        background-color: #fff;
+    }
+    .snake_body{
+        background-color: #3388ee;
+    }
+    .food{
+        background-color: #33aa33;
+    }
+    div{
+        float: left;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: url("snake.jpg");
+        background-size: cover;
+        /* 执行run动画 无限循环 默认暂停*/
+        animation: run 15s linear infinite paused;
+    }
+    /* 自定义动画 */
+    @keyframes run{
+        from{
+        /* 旋转效果 */
+        transform: rotateZ(0);
+        }
+        to{
+        transform: rotateZ(720deg);
+        }
+    }
+</style>
+<body>
+    <div id="box"></div>
+    <audio src="music.mp3" autoplay = "autoplay" id = "myAudio"  loop = "true"></audio>
+    <p>提示：空格键开始/暂停，方向键控制蛇的移动，F5刷新页面</p>
+</body>
+    <script type="text/javascript" src="snake.js"></script>
+</html>
+<script>
+    box.onclick=function(){
+        // 获取当前盒子的动画播放状态
+        let status = box.style.animationPlayState
+        console.log(status)
+        if(status==''|| status==='paused'){//暂停状态
+            // 运行动画
+            box.style.animationPlayState = 'running'
+            // 播放音乐
+            myAudio.play()
+        }else{
+            // 暂停音乐和动画
+            box.style.animationPlayState = 'paused'
+            myAudio.pause()
+        }
+    }
+</script>
